@@ -41,6 +41,10 @@ To  start using the package imported into your project, follow these examples:
 ```go
 cl := exchrateclient.New("your-api-key") // change with your actual key
 // how to get key was explained above
+```
+
+## Fetch supported codes
+```go
 codesMap, err := cl.FetchCodes()
     if err != nil {
     log.Fatalf("Error fetching codes: %s", err)
