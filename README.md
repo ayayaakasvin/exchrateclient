@@ -41,6 +41,10 @@ To  start using the package imported into your project, follow these examples:
 ```go
 cl := exchrateclient.New("your-api-key") // change with your actual key
 // how to get key was explained above
+var (
+    base    string = "USD"
+    target  string = "KZT"
+) // and some example vars
 ```
 
 ## Fetch supported codes
@@ -81,7 +85,7 @@ for code, rate := range index.RateMap {
 }
 ```
 
-## Fetch the Index of an ISO4217 Code
+## Fetch the Pair of ISO4217 Codes
 ```go
 pair, err := cl.FetchPair(base, target)
 if err != nil {
@@ -96,13 +100,7 @@ if pair == nil {
 
 fmt.Printf("%s to %s rate: %.4f\n", pair.BaseCode, pair.TargetCode, pair.Rate)
 ```
-## Fetch the Index of an ISO4217 Code
-```go
-resp, err := cl.Fetch(exchrateclient.PairEndpoint, "USD", "KZT")
-if err != nil {
-    log.Fatalf("Error fetching codes: %s", err)
-}
-```
+
 The Fetch method is useful for obtaining the full response, which can be beneficial if you plan to use the client in your project more extensively.
 
 ## About response from API server
